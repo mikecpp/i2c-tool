@@ -1,19 +1,33 @@
-# I2C Command Application 
+# I2C-Tool
+
+## Introduction
+  - This tool is based on ESP32S3 EVB. https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/index.html 
+  - Console baudrate: 1.5M. 
+
+## How to install and build? 
+  - Install ESP IDF V5.4.2 https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32s3/get-started/index.html 
+```
+    > idf.py -p /dev/ttyACM0 -b 1500000 flash monitor 
+```
+## How to test?
+```
+  > python ssd1306.py 
+```
 
 ## I2C Command 
-### 1. scan  
+### 1. i2c.scan  
 ```
     syntax: 
-        scan  
+        i2c.scan  
 
     return:
         success: OK [return hex string]
         fail: NG
 ```
-### 2. detect  
+### 2. i2c.detect  
 ```
     syntax: 
-        detect [addr]  
+        i2c.detect [addr]  
 
     parameters:  
         - addr: hex string. (like 3C) 
@@ -22,10 +36,10 @@
         success: OK 
         fail: NG 
 ```   
-### 3. read 
+### 3. i2c.read 
 ```
     syntax: 
-        read [addr] [len]
+        i2c.read [addr] [len]
 
     parameters:
         - addr: hex string. 
@@ -35,10 +49,10 @@
         success: OK [return hex string]
         fail: NG
 ```
-### 4. write 
+### 4. i2c.write 
 ```
     syntax: 
-        write [addr] [len] [data] 
+        i2c.write [addr] [len] [data] 
 
     parameters:
         - addr: hex string. 
